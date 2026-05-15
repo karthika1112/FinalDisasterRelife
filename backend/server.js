@@ -40,9 +40,13 @@ app.get("/", (req, res) => {
     message: "Smart Disaster Relief Backend Running Successfully",
   });
 });
-app.get('/api/health', (req, res) =>
-  res.json({ success: true, message: 'Smart Disaster Relief API is running' })
-);
+
+app.get("/api/health", (req, res) => {
+  res.json({
+    success: true,
+    message: "Smart Disaster Relief API is running",
+  });
+});
 
 // ── Routes ────────────────────────────────────────────────────
 app.use('/api/auth',       require('./routes/authRoutes'));
