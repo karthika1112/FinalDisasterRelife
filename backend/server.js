@@ -34,6 +34,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ── Health Check ──────────────────────────────────────────────
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Smart Disaster Relief Backend Running Successfully",
+  });
+});
 app.get('/api/health', (req, res) =>
   res.json({ success: true, message: 'Smart Disaster Relief API is running' })
 );
