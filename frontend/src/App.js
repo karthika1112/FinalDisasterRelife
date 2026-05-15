@@ -20,7 +20,7 @@ import './styles/global.css';
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Navbar />
         <main>
           <Routes>

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { login as loginAPI, register as registerAPI, updatePassword as updatePasswordAPI } from '../services/api';
 
 const AuthContext = createContext();
@@ -67,11 +67,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Listen for the event fired by the Axios interceptor
-  useState(() => {
+  useEffect(() => {
     const handler = (e) => logout(e.detail?.expired);
     window.addEventListener('auth:logout', handler);
     return () => window.removeEventListener('auth:logout', handler);
-  });
+  }, [logout]);
 
   return (
     <AuthContext.Provider value={{
