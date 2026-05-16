@@ -17,14 +17,7 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,          // set this in Railway env vars
 ].filter(Boolean);
 
-app.use(cors({
-  origin: (origin, cb) => {
-    // allow REST clients (Postman, Railway health checks) + allowed origins
-    if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-    cb(new Error(`CORS blocked: ${origin}`));
-  },
-  credentials: true,
-}));
+app.use(cors());
 
 // ── Body parsers ──────────────────────────────────────────────
 app.use(express.json());
