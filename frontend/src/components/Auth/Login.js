@@ -20,7 +20,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await login(form);
+      const user = await login({
+        email: form.email.trim().toLowerCase(),
+        password: form.password,
+      });
       const dest = from || (user.role === 'admin' ? '/admin' : user.role === 'volunteer' ? '/volunteer' : '/disasters');
       navigate(dest, { replace: true });
     } catch { /* error shown via context */ }
